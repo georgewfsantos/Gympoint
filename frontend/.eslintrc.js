@@ -20,6 +20,8 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
+    'jsx-a11y/label-has-associated-control': 'off',
+    'no-alert': 'off',
     'import/prefer-default-export': 'off',
   },
   settings: {

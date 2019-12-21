@@ -14,7 +14,7 @@ import {
   StudentInfo,
 } from './styles';
 
-export default function ListStudents({ match }) {
+export default function ListStudents() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
@@ -30,9 +30,7 @@ export default function ListStudents({ match }) {
     try {
       const response = await api.get(`/students?name=${data.searchInput}`);
 
-      const students = response.data;
-
-      setStudents(students);
+      setStudents(response.data);
     } catch (err) {
       toast.error('Nenhum estudante com este nome foi encontrado');
     }
@@ -106,10 +104,18 @@ export default function ListStudents({ match }) {
                 <span id="age">{student.age}</span>
               </div>
               <div id="action" className="blank">
-                <button id="edit" onClick={() => handleEdit(student)}>
+                <button
+                  type="button"
+                  id="edit"
+                  onClick={() => handleEdit(student)}
+                >
                   editar
                 </button>
-                <button id="delete" onClick={() => handleDelete(student)}>
+                <button
+                  type="button"
+                  id="delete"
+                  onClick={() => handleDelete(student)}
+                >
                   apagar
                 </button>
               </div>

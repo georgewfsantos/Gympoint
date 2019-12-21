@@ -69,7 +69,11 @@ export default function ListQuestions() {
                 <span>{question.student.name}</span>
               </div>
               <div id="action" className="blank">
-                <button id="edit" onClick={() => handleAnswer(question)}>
+                <button
+                  type="button"
+                  id="edit"
+                  onClick={() => handleAnswer(question)}
+                >
                   responder
                 </button>
               </div>

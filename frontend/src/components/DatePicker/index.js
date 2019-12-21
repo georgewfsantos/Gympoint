@@ -5,6 +5,7 @@ import { useField } from '@rocketseat/unform';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
+// eslint-disable-next-line react/prop-types
 export default function Datepicker({ name }) {
   const ref = useRef();
   const { fieldName, registerField, defaultValue, error } = useField(name);
@@ -19,7 +20,6 @@ export default function Datepicker({ name }) {
         pickerRef.clear();
       },
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fieldName, ref.current]);
 
   useEffect(() => {

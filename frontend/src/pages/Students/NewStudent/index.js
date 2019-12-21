@@ -2,8 +2,6 @@ import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
-import Proptypes from 'prop-types';
-
 import { MdCheck, MdKeyboardArrowLeft } from 'react-icons/md';
 
 import { toast } from 'react-toastify';
@@ -104,11 +102,3 @@ export default function NewStudent() {
     </Container>
   );
 }
-
-NewStudent.propTypes = {
-  match: Proptypes.shape({
-    params: Proptypes.shape({
-      id: Proptypes.node,
-    }).isRequired,
-  }).isRequired,
-};

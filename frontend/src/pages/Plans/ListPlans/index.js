@@ -93,10 +93,18 @@ export default function ListPlans() {
                 <span id="price">{`R$${plan.price}`}</span>
               </div>
               <div id="action" className="blank">
-                <button id="edit" onClick={() => handleEdit(plan)}>
+                <button
+                  type="button"
+                  id="edit"
+                  onClick={() => handleEdit(plan)}
+                >
                   editar
                 </button>
-                <button id="delete" onClick={() => handleDelete(plan)}>
+                <button
+                  type="button"
+                  id="delete"
+                  onClick={() => handleDelete(plan)}
+                >
                   apagar
                 </button>
               </div>

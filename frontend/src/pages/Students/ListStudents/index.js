@@ -24,7 +24,8 @@ export default function ListStudents() {
       setStudents(response.data);
     }
     loadStudents(students);
-  }, [students]);
+    // eslint-disable-next-line
+  }, []);
 
   async function handleSubmit(data) {
     try {

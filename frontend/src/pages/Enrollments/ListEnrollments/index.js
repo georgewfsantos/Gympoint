@@ -25,7 +25,8 @@ export default function ListEnrollments() {
 
   useEffect(() => {
     loadEnrollments(enrollments);
-  }, [enrollments]);
+    // eslint-disable-next-line
+  }, []);
 
   function handleEdit(enrollment) {
     history.push(`/enrollments/${enrollment.id}/edit`);
@@ -59,7 +60,7 @@ export default function ListEnrollments() {
     <Container>
       <DashHeader>
         <strong>Gerenciando matrículas</strong>
-        <button onClick={handleNew}>
+        <button type="button" onClick={handleNew}>
           <MdAdd size={20} color="#FFF" />
           Cadastrar
         </button>
@@ -126,10 +127,18 @@ export default function ListEnrollments() {
                 </span>
               </div>
               <div id="action">
-                <button id="edit" onClick={() => handleEdit(enrollment)}>
+                <button
+                  type="button"
+                  id="edit"
+                  onClick={() => handleEdit(enrollment)}
+                >
                   editar
                 </button>
-                <button id="delete" onClick={() => handleDelete(enrollment)}>
+                <button
+                  type="button"
+                  id="delete"
+                  onClick={() => handleDelete(enrollment)}
+                >
                   apagar
                 </button>
               </div>

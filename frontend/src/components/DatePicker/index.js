@@ -20,6 +20,7 @@ export default function Datepicker({ name }) {
         pickerRef.clear();
       },
     });
+    // eslint-disable-next-line
   }, [fieldName, ref.current]);
 
   useEffect(() => {

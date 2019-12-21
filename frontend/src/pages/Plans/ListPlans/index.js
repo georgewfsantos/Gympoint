@@ -16,14 +16,15 @@ import {
 export default function ListPlans() {
   const [plans, setPlans] = useState([]);
 
-  useEffect(() => {
-    async function loadPlans() {
-      const response = await api.get('/plans');
-      setPlans(response.data);
-    }
+  async function loadPlans() {
+    const response = await api.get('/plans');
+    setPlans(response.data);
+  }
 
+  useEffect(() => {
     loadPlans(plans);
-  }, [plans]);
+    // eslint-disable-next-line
+  }, []);
 
   function handleEdit(plan) {
     history.push(`/plans/${plan.id}/edit`);
@@ -42,6 +43,7 @@ export default function ListPlans() {
       try {
         await api.delete(`/plans/${plan.id}/delete`);
         toast.success('Plano excluído com sucesso');
+        loadPlans(plans);
       } catch (err) {
         if (err.response) {
           toast.error(

@@ -25,7 +25,8 @@ export default function ListQuestions() {
 
   useEffect(() => {
     loadQuestions(questions);
-  }, [questions]);
+    // eslint-disable-next-line
+  }, []);
 
   function handleAnswer(question) {
     setVisible(true);

@@ -89,8 +89,8 @@ export default function ListQuestions() {
         </QuestionList>
       )}
 
-      {visible ? (
-        <div id="answerBox" visible={visible}>
+      {visible && (
+        <div id="answerBox" visible={visible.toString()}>
           <strong>PERGUNTA DO ALUNO</strong>
           <span>{questionBody.question}</span>
           <Form onSubmit={handleSubmit}>
@@ -101,7 +101,7 @@ export default function ListQuestions() {
             <button type="submit">Responder aluno</button>
           </Form>
         </div>
-      ) : null}
+      )}
     </Container>
   );
 }

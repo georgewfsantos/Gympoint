@@ -29,6 +29,7 @@ module.exports = {
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'no-param-reassign': 'off',
   },
   settings: {
     'import/resolver': {

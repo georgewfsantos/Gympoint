@@ -3,10 +3,10 @@ import {Text} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-// import { Container } from './styles';
+import {Container} from './styles';
 
 export default function Checkin() {
-  return <Text> Checkin page</Text>;
+  return <Container />;
 }
 
 Checkin.navigationOptions = {

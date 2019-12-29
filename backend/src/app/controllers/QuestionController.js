@@ -37,7 +37,6 @@ class QuestionController {
 
   async store(req, res) {
     const schema = Yup.object().shape({
-      student_id: Yup.number().required(),
       question: Yup.string().required(),
     });
 
@@ -45,14 +44,25 @@ class QuestionController {
       return res.status(400).json({ error: 'Validation failed' });
     }
 
-    const { student_id, question } = req.body;
+    const { question } = req.body;
+    const { student_id } = req.params;
 
-    const std_question = await Question.create({
+    const studentQuestion = await Question.create({
       student_id,
       question,
     });
 
-    return res.json(std_question);
+    return res.json(studentQuestion);
+  }
+
+  async show(req, res) {
+    const { question_id } = req.params;
+
+    const question = await Question.findByPk(question_id, {
+      attributes: ['question', 'answer', 'answered_at'],
+    });
+
+    return res.json(question);
   }
 
   async update(req, res) {

@@ -1,27 +1,20 @@
 import styled from 'styled-components/native';
+import {TouchableOpacity} from 'react-native';
 
 export const Container = styled.View`
-margin-bottom: 15px;
-width: 100%;
-max-height: 150px;
-height: 100%
-padding: 20px ;
-border-radius: 4px;
-background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  height: 150px;
 
-display: flex;
-flex-direction: row;
-align-items-center;
-justify-content: center;
-border: 1px solid #dddddd;
-border-radius: 4px;
-
+  background: #ffffff;
+  border: solid 1px #dddddd;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 10px;
 `;
 
-export const Info = styled.View`
-  width: 100%;
-  height: 100%;
-`;
+export const Info = styled(TouchableOpacity)``;
 export const Header = styled.View`
   display: flex;
   flex-direction: row;
@@ -31,35 +24,26 @@ export const Header = styled.View`
 export const Left = styled.View`
   display: flex;
   flex-direction: row;
-  width: 45%;
 `;
-export const Right = styled.Text`
-  display: flex;
-  flex-direction: row;
-`;
+export const Right = styled.View``;
 
 export const Title = styled.Text`
   font-size: 16px;
-  color: #999999;
   font-weight: 700;
-  margin-left: 8px;
+  color: ${props => (props.answered !== null ? '#42cb59' : '#999999')};
+  margin-left: 5px;
 `;
 export const Time = styled.Text`
-  align-self: flex-end;
-  color: #666666;
   font-size: 16px;
   font-weight: 400;
+  color: #666666;
 `;
 
-export const Wrapper = styled.View`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-`;
+export const Wrapper = styled.View``;
 
 export const InfoBody = styled.Text`
-  color: #666666;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
+  color: #666666;
 `;

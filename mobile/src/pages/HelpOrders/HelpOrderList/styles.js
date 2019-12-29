@@ -10,8 +10,9 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const NewHelpOrderButton = styled(Button)`
-  width: 88%;
+  width: 350px;
   margin-top: 30px;
+  margin-bottom: 5px;
 `;
 
 export const List = styled.FlatList.attrs({

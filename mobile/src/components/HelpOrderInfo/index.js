@@ -2,6 +2,8 @@ import React, {useMemo} from 'react';
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import api from '~/services/api';
 
 import {
@@ -16,37 +18,40 @@ import {
   InfoBody,
 } from './styles';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-
-export default function HelpOrderInfo({data}) {
+export default function HelpOrderInfo({data, navigation}) {
   const parsedDate = useMemo(() => {
     return formatRelative(parseISO(data.createdAt), new Date(), {
       locale: pt,
       addSuffix: true,
     });
   }, [data.createdAt]);
+
   return (
     <Container>
-      <TouchableOpacity onPress={() => {}}>
-        <Info>
-          <Header>
-            <Left>
-              <Icon name="check-circle" size={20} color="gray" />
-              <Title>
-                {data.answer !== null ? 'Respondido' : 'Sem Resposta'}
-              </Title>
-            </Left>
+      <Info
+        onPress={() => {
+          navigation.navigate('HelpOrderDetail', {data});
+        }}>
+        <Header>
+          <Left>
+            <Icon
+              name="check-circle"
+              size={20}
+              color={data.answer !== null ? '#42cb59' : '#999999'}
+            />
+            <Title answered={data.answer}>
+              {data.answer !== null ? 'Respondido' : 'Sem Resposta'}
+            </Title>
+          </Left>
 
-            <Right>
-              <Time>{parsedDate}</Time>
-            </Right>
-          </Header>
-          <Wrapper>
-            <InfoBody>{data.question}</InfoBody>
-          </Wrapper>
-        </Info>
-      </TouchableOpacity>
+          <Right>
+            <Time>{parsedDate}</Time>
+          </Right>
+        </Header>
+        <Wrapper>
+          <InfoBody>{data.question}</InfoBody>
+        </Wrapper>
+      </Info>
     </Container>
   );
 }

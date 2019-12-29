@@ -1,12 +1,49 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React, {useState} from 'react';
+import {useSelector} from 'react-redux';
 
-import {Container} from './styles';
+import {Alert} from 'react-native';
 
-export default function NewHelpOrder() {
+import api from '~/services/api';
+
+import {Container, Form, FormInput, SubmitButton} from './styles';
+
+export default function NewHelpOrder({navigation}) {
+  const [question, setQuestion] = useState('');
+  const loading = useSelector(state => state.auth.loading);
+  const studentId = useSelector(state => state.user.profile.id);
+
+  async function handleSubmit() {
+    try {
+      await api.post(`/students/${studentId}/questions`, {
+        question,
+        studentId,
+      });
+
+      Alert.alert('Seu pedido de auxílio foi enviado com sucesso');
+
+      navigation.navigate('HelpOrderList');
+    } catch (error) {
+      Alert.alert(
+        'Não foi possível cadastrar seu pedido de auxílio. Por favor verifique os dados',
+      );
+    }
+  }
   return (
     <Container>
-      <Text>NewHelpOrder</Text>
+      <Form>
+        <FormInput
+          multiline
+          name="helpOrder"
+          placeholder="Inclua seu pedido de auxílio"
+          returnKeyType="send"
+          onSubmitEditing={handleSubmit}
+          value={question}
+          onChangeText={setQuestion}
+        />
+        <SubmitButton loading={loading} onPress={handleSubmit}>
+          Enviar pedido
+        </SubmitButton>
+      </Form>
     </Container>
   );
 }

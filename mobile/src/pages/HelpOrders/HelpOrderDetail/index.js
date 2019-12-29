@@ -1,12 +1,33 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React, {useMemo} from 'react';
 
-import {Container} from './styles';
+import {parseISO, formatRelative} from 'date-fns';
+import pt from 'date-fns/locale/pt-BR';
 
-export default function HelpOrderDetail() {
+import {Container, Info, Header, Title, Time, InfoBody} from './styles';
+
+export default function HelpOrderDetail({navigation}) {
+  const helpOrderInfo = navigation.getParam('data');
+  const parsedDate = useMemo(() => {
+    return formatRelative(parseISO(helpOrderInfo.createdAt), new Date(), {
+      locale: pt,
+      addSuffix: true,
+    });
+  }, [helpOrderInfo.createdAt]);
+
   return (
     <Container>
-      <Text>HelpOrderDetail</Text>
+      <Info>
+        <Header>
+          <Title>PERGUNTA</Title>
+          <Time>{parsedDate}</Time>
+        </Header>
+        <InfoBody>{helpOrderInfo.question}</InfoBody>
+
+        <Header>
+          <Title>RESPOSTA</Title>
+        </Header>
+        <InfoBody>{helpOrderInfo.answer}</InfoBody>
+      </Info>
     </Container>
   );
 }

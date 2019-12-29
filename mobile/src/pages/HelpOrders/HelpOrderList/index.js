@@ -1,27 +1,36 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
+import {withNavigationFocus} from 'react-navigation';
 
 import api from '~/services/api';
 
-import HelpOrederInfo from '~/components/HelpOrderInfo';
+import HelpOrderInfo from '~/components/HelpOrderInfo';
 
 import {Container, NewHelpOrderButton, List} from './styles';
 
-export default function HelpOrderList({navigation}) {
+function HelpOrderList({navigation, isFocused}) {
   const studentId = useSelector(state => state.user.profile.id);
   const [helpOrders, setHelpOrders] = useState([]);
 
-  useEffect(() => {
-    async function loadHelpOrders() {
-      const response = await api.get(`students/${studentId}/questions`);
+  async function loadHelpOrders() {
+    const response = await api.get(`students/${studentId}/questions`);
 
-      setHelpOrders(response.data);
+    setHelpOrders(response.data);
+  }
+
+  useEffect(() => {
+    if (isFocused) {
+      loadHelpOrders();
     }
-    loadHelpOrders();
-  }, []);
+  }, [isFocused]);
 
   function handleNewHelpOrder() {
     navigation.navigate('NewHelpOrder');
+  }
+
+  function handleDetail() {
+    navigation.navigate('NewHelpOrder');
+    console.tron.log('hi');
   }
   return (
     <Container>
@@ -31,8 +40,16 @@ export default function HelpOrderList({navigation}) {
       <List
         data={helpOrders}
         keyExtractor={item => String(item.id)}
-        renderItem={({item}) => <HelpOrederInfo data={item} />}
+        renderItem={({item}) => (
+          <HelpOrderInfo
+            data={item}
+            onPress={handleDetail}
+            navigation={navigation}
+          />
+        )}
       />
     </Container>
   );
 }
+
+export default withNavigationFocus(HelpOrderList);

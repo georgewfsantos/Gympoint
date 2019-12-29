@@ -31,8 +31,7 @@ export default function Sign() {
           onChangeText={setId}
         />
         <SubmitButton loading={loading} onPress={handleSubmit}>
-          {' '}
-          Entrar no sistema{' '}
+          Entrar no sistema
         </SubmitButton>
       </Form>
     </Container>

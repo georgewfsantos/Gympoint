@@ -1,17 +1,15 @@
-import * as Yup from 'yup';
 import { subDays, isAfter, isBefore } from 'date-fns';
 
 import Checkin from '../models/Checkin';
 import Student from '../models/Student';
-import Enrollment from '../models/Enrollment';
 
 class CheckinController {
   async index(req, res) {
-    const { id } = req.params;
+    const { student_id } = req.params;
 
-    const checkins = await Checkin.findAll({ where: { student_id: id } });
+    const checkins = await Checkin.findAll({ where: { student_id } });
 
-    const student = await Student.findByPk(id);
+    const student = await Student.findByPk(student_id);
 
     if (!student) {
       res.status(400).json({
@@ -21,16 +19,9 @@ class CheckinController {
 
     return res.json(checkins);
   }
+
   async store(req, res) {
-    const schema = Yup.object().shape({
-      student_id: Yup.number().required(),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation failed' });
-    }
-
-    const { student_id } = req.body;
+    const { student_id } = req.params;
 
     const student = await Student.findByPk(student_id);
 

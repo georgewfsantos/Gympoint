@@ -2,6 +2,7 @@ import { subDays, isAfter, isBefore } from 'date-fns';
 
 import Checkin from '../models/Checkin';
 import Student from '../models/Student';
+import Enrollment from '../models/Enrollment';
 
 class CheckinController {
   async index(req, res) {
@@ -20,6 +21,7 @@ class CheckinController {
     return res.json(checkins);
   }
 
+  // eslint-disable-next-line consistent-return
   async store(req, res) {
     const { student_id } = req.params;
 
@@ -43,17 +45,22 @@ class CheckinController {
 
     const limit = checkIfOneWeek.filter(chk => chk === true);
 
+    const enrollment = await Enrollment.findByPk(student_id);
+
     if (limit.length >= 5) {
       res.status(400).json({
-        error: 'You are not allowed to checkin more than 5 times a week',
+        error: 'Você já alcançou o limite de 5 checkins na semana',
       });
+    } else if (enrollment.active !== true) {
+      res.status(400).json({
+        error: 'Você não possui matrícula ativa.',
+      });
+    } else {
+      const checkin = await Checkin.create({
+        student_id,
+      });
+      return res.json(checkin);
     }
-
-    const checkin = await Checkin.create({
-      student_id,
-    });
-
-    return res.json(checkin);
   }
 }
 

@@ -13,13 +13,15 @@ export const Form = styled.View`
 `;
 export const FormInput = styled.TextInput`
   width: 100%
-  height: 500px;
+  height: 400px;
   margin-top: 20px;
+
 
   background: #ffffff;
   border: solid 1px #dddddd;
   padding: 30px;
   border-radius: 4px;`;
+
 export const SubmitButton = styled(Button)`
   margin-top: 20px;
 `;

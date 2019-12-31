@@ -1,4 +1,6 @@
 import React, {useMemo} from 'react';
+import {TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
@@ -31,3 +33,14 @@ export default function HelpOrderDetail({navigation}) {
     </Container>
   );
 }
+
+HelpOrderDetail.navigationOptions = ({navigation}) => ({
+  headerLeft: () => (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('HelpOrderList');
+      }}>
+      <Icon name="chevron-left" size={20} />
+    </TouchableOpacity>
+  ),
+});

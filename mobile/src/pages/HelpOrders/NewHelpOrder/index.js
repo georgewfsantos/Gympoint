@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
+import {Alert, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
-
-import {Alert} from 'react-native';
 
 import api from '~/services/api';
 
@@ -39,6 +39,7 @@ export default function NewHelpOrder({navigation}) {
           onSubmitEditing={handleSubmit}
           value={question}
           onChangeText={setQuestion}
+          style={{textAlignVertical: 'top'}}
         />
         <SubmitButton loading={loading} onPress={handleSubmit}>
           Enviar pedido
@@ -47,3 +48,14 @@ export default function NewHelpOrder({navigation}) {
     </Container>
   );
 }
+
+NewHelpOrder.navigationOptions = ({navigation}) => ({
+  headerLeft: () => (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('HelpOrderList');
+      }}>
+      <Icon name="chevron-left" size={20} />
+    </TouchableOpacity>
+  ),
+});

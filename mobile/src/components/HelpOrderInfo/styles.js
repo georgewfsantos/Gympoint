@@ -41,7 +41,9 @@ export const Time = styled.Text`
 
 export const Wrapper = styled.View``;
 
-export const InfoBody = styled.Text`
+export const InfoBody = styled.Text.attrs({
+  numberOfLines: 3,
+})`
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;

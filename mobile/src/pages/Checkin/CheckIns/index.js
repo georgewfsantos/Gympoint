@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {withNavigationFocus} from 'react-navigation';
+import PropTypes from 'prop-types';
 
 import {Alert} from 'react-native';
 import api from '~/services/api';
@@ -8,7 +9,7 @@ import api from '~/services/api';
 import CheckinInfo from '~/components/CheckinInfo';
 import {Container, CheckinList, NewCheckinButton} from './styles';
 
-function CheckIns({navigation, isFocused}) {
+function CheckIns({isFocused}) {
   const studentId = useSelector(state => state.user.profile.id);
   const [checkIns, setCheckIns] = useState([]);
 
@@ -51,3 +52,7 @@ function CheckIns({navigation, isFocused}) {
 }
 
 export default withNavigationFocus(CheckIns);
+
+CheckIns.propTypes = {
+  isFocused: PropTypes.bool.isRequired,
+};

@@ -2,9 +2,9 @@ import React, {useMemo} from 'react';
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import PropTypes from 'prop-types';
 
-import api from '~/services/api';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {
   Container,
@@ -55,3 +55,15 @@ export default function HelpOrderInfo({data, navigation}) {
     </Container>
   );
 }
+
+HelpOrderInfo.propTypes = {
+  data: PropTypes.shape({
+    createdAt: PropTypes.string,
+    answer: PropTypes.string,
+    question: PropTypes.string,
+  }).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    getParam: PropTypes.func,
+  }).isRequired,
+};

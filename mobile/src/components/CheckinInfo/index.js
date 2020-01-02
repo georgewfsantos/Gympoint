@@ -2,6 +2,8 @@ import React, {useMemo} from 'react';
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
+import PropTypes from 'prop-types';
+
 import {Container, Title, Time, Info} from './styles';
 
 export default function CheckinInfo({data, checkIns}) {
@@ -21,3 +23,10 @@ export default function CheckinInfo({data, checkIns}) {
     </Container>
   );
 }
+
+CheckinInfo.propTypes = {
+  data: PropTypes.shape({
+    createdAt: PropTypes.string,
+  }).isRequired,
+  checkIns: PropTypes.instanceOf(Array).isRequired,
+};

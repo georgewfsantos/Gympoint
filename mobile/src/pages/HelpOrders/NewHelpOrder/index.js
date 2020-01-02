@@ -3,6 +3,8 @@ import {Alert, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import api from '~/services/api';
 
 import {Container, Form, FormInput, SubmitButton} from './styles';
@@ -59,3 +61,9 @@ NewHelpOrder.navigationOptions = ({navigation}) => ({
     </TouchableOpacity>
   ),
 });
+
+NewHelpOrder.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};

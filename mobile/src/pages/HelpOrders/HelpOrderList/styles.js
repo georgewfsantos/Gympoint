@@ -4,7 +4,6 @@ import Button from '~/components/Button';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background: #ffffff;
   align-items: center;
   background: #f5f5f5;
 `;

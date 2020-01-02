@@ -2,6 +2,8 @@ import React, {useMemo} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import PropTypes from 'prop-types';
+
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
@@ -44,3 +46,10 @@ HelpOrderDetail.navigationOptions = ({navigation}) => ({
     </TouchableOpacity>
   ),
 });
+
+HelpOrderDetail.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    getParam: PropTypes.func,
+  }).isRequired,
+};

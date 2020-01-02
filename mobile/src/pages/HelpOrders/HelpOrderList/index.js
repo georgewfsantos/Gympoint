@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {withNavigationFocus} from 'react-navigation';
+import PropTypes from 'prop-types';
 
 import api from '~/services/api';
 
@@ -30,7 +31,6 @@ function HelpOrderList({navigation, isFocused}) {
 
   function handleDetail() {
     navigation.navigate('NewHelpOrder');
-    console.tron.log('hi');
   }
   return (
     <Container>
@@ -53,3 +53,10 @@ function HelpOrderList({navigation, isFocused}) {
 }
 
 export default withNavigationFocus(HelpOrderList);
+
+HelpOrderList.propTypes = {
+  isFocused: PropTypes.bool.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};

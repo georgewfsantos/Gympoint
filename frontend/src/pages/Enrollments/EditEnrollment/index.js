@@ -9,8 +9,8 @@ import { MdKeyboardArrowLeft, MdCheck } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-
 import Select from '~/components/Select';
+
 import DatePicker from '~/components/DatePicker';
 
 import api from '~/services/api';
@@ -25,6 +25,7 @@ const schema = Yup.object().shape({
 });
 
 export default function EditEnrollment({ match }) {
+  const [student, setStudent] = useState([]);
   const [enrollment, setEnrollment] = useState({});
 
   async function loadEnrollment() {
@@ -70,6 +71,16 @@ export default function EditEnrollment({ match }) {
     history.push('/enrollments');
   }
 
+  async function getStudents() {
+    const response = await api.get(`/students?name=${student.name}`);
+
+    setStudent(response.data);
+  }
+
+  useEffect(() => {
+    getStudents();
+  }, []);
+
   return (
     <Container>
       <Wrapper>
@@ -90,6 +101,8 @@ export default function EditEnrollment({ match }) {
           <FormWrapper>
             <label htmlFor="title">ID DO ALUNO</label>
             <Input id="title" name="student_id" />
+
+            <label htmlFor="student">STUDENT</label>
             <Select />
             <div id="line">
               <div>

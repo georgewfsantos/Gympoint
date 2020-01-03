@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 import AsyncSelect from 'react-select/async';
+import Proptypes from 'prop-types';
 
 import api from '~/services/api';
 
 export default function SelectStudent({ defaultValue }) {
-  const [student, setStudent] = useState([]);
-
   async function filterOptions(inputValue) {
-    const response = api.get(`/students?${student.name}`);
+    const response = await api.get(`/students?${inputValue}`);
 
     const options = response.data.map(r => ({
       label: r.name,
@@ -39,3 +38,7 @@ export default function SelectStudent({ defaultValue }) {
     />
   );
 }
+
+SelectStudent.propTypes = {
+  defaultValue: Proptypes.string.isRequired,
+};

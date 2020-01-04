@@ -46,6 +46,7 @@ export default function ListEnrollments() {
         await api.delete(`/enrollments/${enrollment.id}/delete`);
         loadEnrollments(enrollments);
         toast.success('Matrícula excluída com sucesso');
+        loadEnrollments();
       } catch (err) {
         if (err.response) {
           toast.error(

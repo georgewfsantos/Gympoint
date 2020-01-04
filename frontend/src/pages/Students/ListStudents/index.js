@@ -3,6 +3,7 @@ import { Form, Input } from '@rocketseat/unform';
 import { toast } from 'react-toastify';
 
 import { MdAdd } from 'react-icons/md';
+
 import api from '~/services/api';
 import history from '~/services/history';
 
@@ -17,13 +18,14 @@ import {
 export default function ListStudents() {
   const [students, setStudents] = useState([]);
 
-  useEffect(() => {
-    async function loadStudents() {
-      const response = await api.get('students');
+  async function loadStudents() {
+    const response = await api.get('students');
 
-      setStudents(response.data);
-    }
-    loadStudents(students);
+    setStudents(response.data);
+  }
+
+  useEffect(() => {
+    loadStudents();
     // eslint-disable-next-line
   }, []);
 
@@ -54,6 +56,7 @@ export default function ListStudents() {
       try {
         await api.delete(`/students/${student.id}/delete`);
         toast.success('Aluno excluído com sucesso');
+        loadStudents();
       } catch (err) {
         if (err.response) {
           toast.error(

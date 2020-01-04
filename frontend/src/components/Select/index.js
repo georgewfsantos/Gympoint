@@ -6,6 +6,7 @@ import Proptypes from 'prop-types';
 import api from '~/services/api';
 
 export default function SelectStudent({ defaultValue }) {
+  console.tron.log(defaultValue);
   async function filterOptions(inputValue) {
     const response = await api.get(`/students?${inputValue}`);
 
@@ -13,6 +14,8 @@ export default function SelectStudent({ defaultValue }) {
       label: r.name,
       value: r.id,
     }));
+
+    console.tron.log(options);
 
     return options.filter(i =>
       i.label.toLowerCase().includes(inputValue.toLowerCase())

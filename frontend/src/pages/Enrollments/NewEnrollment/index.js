@@ -2,8 +2,6 @@ import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
-import Proptypes from 'prop-types';
-
 import { MdKeyboardArrowLeft, MdCheck } from 'react-icons/md';
 
 import { toast } from 'react-toastify';
@@ -21,12 +19,12 @@ const schema = Yup.object().shape({
   start_date: Yup.date().required('o campo data de início é obrigatório'),
 });
 
-export default function NewEnrollment({ match }) {
+export default function NewEnrollment() {
   async function handleSubmit(data) {
     try {
       await api.post('/enrollments', data);
 
-      toast.success('Matrícual cadastrada com sucesso');
+      toast.success('Matrícula cadastrada com sucesso');
       history.push('/enrollments');
     } catch (err) {
       if (err.response) {
@@ -59,20 +57,30 @@ export default function NewEnrollment({ match }) {
             </div>
           </DashHeader>
           <FormWrapper>
-            <label htmlFor="title">ID DO ALUNO</label>
-            <Input id="title" name="student_id" />
+            <label htmlFor="student_id">ID DO ALUNO</label>
+            <Input id="student_id" name="student_id" />
+
             <div id="line">
               <div>
                 <label htmlFor="plan_id">ID DO PLANO </label>
-                <Input className="short" id="duration" name="plan_id" />
+                <Input className="short" id="plan_id" name="plan_id" />
               </div>
               <div>
                 <label htmlFor="start_date">DATA DE INÍCIO</label>
-                <DatePicker className="short" id="price" name="start_date" />
+                <DatePicker
+                  className="short"
+                  id="start_date"
+                  name="start_date"
+                />
               </div>
               <div>
-                <label htmlFor="price">DATA DE TÉRMINO</label>
-                <Input className="short" id="price" name="end_date" readOnly />
+                <label htmlFor="end_date">DATA DE TÉRMINO</label>
+                <Input
+                  className="short"
+                  id="end_date"
+                  name="end_date"
+                  readOnly
+                />
               </div>
               <div>
                 <label htmlFor="total-price">VALOR FINAL (em R$)</label>
@@ -90,11 +98,3 @@ export default function NewEnrollment({ match }) {
     </Container>
   );
 }
-
-NewEnrollment.propTypes = {
-  match: Proptypes.shape({
-    params: Proptypes.shape({
-      id: Proptypes.node,
-    }).isRequired,
-  }).isRequired,
-};

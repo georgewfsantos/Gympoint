@@ -77,7 +77,7 @@ export default function ListStudents() {
           </Form>
         </div>
       </DashHeader>
-      {students.length > 0 && (
+      {students.length > 0 ? (
         <StudentList>
           <ListHeader>
             <div className="name">
@@ -122,6 +122,10 @@ export default function ListStudents() {
               </div>
             </StudentInfo>
           ))}
+        </StudentList>
+      ) : (
+        <StudentList>
+          <strong id="no-content">Não há alunos cadastrados.</strong>
         </StudentList>
       )}
     </Container>

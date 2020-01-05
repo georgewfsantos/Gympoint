@@ -3,7 +3,7 @@ Application to register and manipulate student, enrollment and plan data for gym
 
 Here are some instructions you will need to get the project running :
 
-Backend:
+**Backend**:
 
 * create the docker POSTGRES container to connect the server to the database, making the necessary configuration in the 
 src/config/dabase.js file, and editing the .env.example file . 
@@ -12,14 +12,14 @@ src/config/dabase.js file, and editing the .env.example file .
 
 * after all the initial setup is finished, to get the server running just run $ yarn dev.
 
-Frontend:
+**Frontend**:
 
 * install all the dependencies in the package.json file by running $ yarn or npm i .
 if necessary add edit the server address in the  src/services/api.js file to connect your application to the server.
 
 * Run yarn start to get the application running.
 
-Mobile:
+**Mobile**:
 
 * install all the dependencies in the package.json file by running $ yarn or npm i
 

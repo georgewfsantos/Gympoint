@@ -8,7 +8,7 @@ Here are some instructions you will need to get the project running :
 * create the docker POSTGRES container to connect the server to the database, making the necessary configuration in the 
 src/config/dabase.js file, and editing the .env.example file . 
 
-* don't forget to install all the dependencies in the package.json file , by running the command $ yarn or npm i.
+* don't forget to install all the dependencies in the package.json file , by running the command '$ yarn' or 'npm i'.
 
 * after all the initial setup is finished, to get the server running just run $ yarn dev.
 

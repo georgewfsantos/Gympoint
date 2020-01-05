@@ -16,7 +16,7 @@ src/config/dabase.js file, and editing the .env.example file .
 **Frontend**:
 
 * install all the dependencies in the package.json file by running ```$ yarn``` or ```npm i``` .
-if necessary add edit the server address in the  ```src/services/api.js``` file to connect your application to the server.
+if necessary, edit the server address in the  ```src/services/api.js``` file to connect your application to the server.
 
 * Run ```$ yarn start``` to get the application running.
 

@@ -33,5 +33,5 @@ run ```$ pod install``` to install all cocoapods dependencies.
 need to be linked manually in order to work. If something does not run appropriately, try linking the depen-
 dencies that you installed right before the error ocurred. 
 
-* to run the application run ```$ yarn react-native run-android``` or ```$ yarn react-native run-ios```, depending on each
+* to run the application run ```$ yarn react-native run-android``` or ```$ yarn react-native run-ios```, depending on Which
 platform you're testing your application.

@@ -10,7 +10,8 @@ src/config/dabase.js file, and editing the .env.example file .
 
 * don't forget to install all the dependencies in the package.json file , by running the command ```$ yarn``` or ```npm i```.
 
-* after all the initial setup is finished, to get the server running just run $ yarn dev.
+* after all the initial setup is finished, to get the server running just run ```$ yarn dev```.
+* run ``` $ yarn queue ``` to start the queue server. 
 
 **Frontend**:
 

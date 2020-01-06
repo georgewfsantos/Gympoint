@@ -92,7 +92,7 @@ export default function NewStudent() {
                   className="short"
                   id="height"
                   name="height"
-                  placeholder="Altura"
+                  placeholder="Altura ex.: 1.65"
                 />
               </div>
             </div>

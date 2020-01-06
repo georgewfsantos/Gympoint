@@ -63,11 +63,14 @@ export const Wrapper = styled.div`
      span {
       color: #f94d6a;
       margin-bottom: 20px;
+      display: block;
 
     }
 
     .short span {
-      display: block;
+
+      max-width: 300px;
+      word-wrap: break-word;
     }
 
     label {

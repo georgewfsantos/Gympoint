@@ -63,6 +63,8 @@ export const Wrapper = styled.div`
      span {
       color: #f94d6a;
       margin-bottom: 20px;
+      display: block;
+      max-width: 300px;
 
     }
 

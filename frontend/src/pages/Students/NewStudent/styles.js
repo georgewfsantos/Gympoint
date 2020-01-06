@@ -63,12 +63,15 @@ export const Wrapper = styled.div`
      span {
       color: #f94d6a;
       margin-bottom: 20px;
-
-    }
-
-    .short span {
       display: block;
+      text-overflow: ellipsis;
+      max-width: 300px;
+
+
     }
+
+
+
 
     label {
       color: #444444;
@@ -88,6 +91,8 @@ export const Wrapper = styled.div`
       color: #666666;
       font-size: 16px;
     }
+
+
 
     div#line {
       label {

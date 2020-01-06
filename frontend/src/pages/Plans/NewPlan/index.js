@@ -62,11 +62,21 @@ export default function NewPlan() {
             <div id="line">
               <div>
                 <label htmlFor="duration">DURAÇÃO (em meses)</label>
-                <Input className="short" id="duration" name="duration" />
+                <Input
+                  className="short"
+                  id="duration"
+                  name="duration"
+                  placeholder="ex.: 5"
+                />
               </div>
               <div>
                 <label htmlFor="price">PREÇO MENSAL (em R$)</label>
-                <Input className="short" id="price" name="price" />
+                <Input
+                  className="short"
+                  id="price"
+                  name="price"
+                  placeholder="ex.: 98.00"
+                />
               </div>
               <div>
                 <label htmlFor="total-price">PREÇO TOTAL (em R$)</label>

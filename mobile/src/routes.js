@@ -38,7 +38,7 @@ export default (signedIn = false) =>
                 },
               ),
               navigationOptions: {
-                tabBarLabel: 'Pedir ajuda ',
+                tabBarLabel: 'Check-ins  ',
                 tabBarIcon: ({tintColor}) => (
                   <Icon name="edit-location" size={20} color={tintColor} />
                 ),
